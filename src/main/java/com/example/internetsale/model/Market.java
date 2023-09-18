@@ -30,10 +30,6 @@ public class Market {
     @JoinColumn(name = "items_id", referencedColumnName = "items_id",insertable = false, updatable = false)
     Item itemNo;
 
-
-
-
-
 }
 
 

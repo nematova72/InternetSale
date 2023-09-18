@@ -16,6 +16,7 @@ public class MarketService {
 
     @Autowired
     public MarketService(MarketRepo marketRepo) {
+
         this.marketRepo = marketRepo;
     }
 

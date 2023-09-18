@@ -3,6 +3,7 @@ package com.example.internetsale.controller;
 import com.example.internetsale.model.Item;
 import com.example.internetsale.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,5 +35,11 @@ public class ItemController {
     @DeleteMapping("/delete/{id}")
     public void deleteItem(@PathVariable Long id){
         itemService.deleteItem(id);
+    }
+
+    @GetMapping()
+    public String adminPage(Model model, @ModelAttribute("person") Item item){
+        model.addAttribute("items", itemService.listItems(item.getName()));
+        return "adminPage";
     }
 }
