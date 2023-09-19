@@ -37,9 +37,9 @@ public class ItemController {
         itemService.deleteItem(id);
     }
 
-    @GetMapping()
-    public String adminPage(Model model, @ModelAttribute("person") Item item){
-        model.addAttribute("items", itemService.listItems(item.getName()));
-        return "adminPage";
-    }
+//    @GetMapping()
+//    public String adminPage(Model model, @ModelAttribute("person") Item item){
+//        model.addAttribute("items", itemService.listItems(item.getName()));
+//        return "adminPage";
+//    }
 }

@@ -21,22 +21,33 @@ public class MarketService {
     }
 
     public List<MarketDto> listMarkets(String name) {
-        if (name == null) {
-            List<Market> listMarkets = marketRepo.findAll();
-            List<MarketDto> result = new ArrayList<>();
-            for(int i=0; i<listMarkets.size();i++){
-                MarketDto marketDto = new MarketDto();
-                marketDto.setId(listMarkets.get(i).getId());
-                marketDto.setName(listMarkets.get(i).getName());
-                marketDto.setLocation(listMarkets.get(i).getLocation());
-                marketDto.setItems_name(listMarkets.get(i).getItemNo().getName());
-                result.add(marketDto);
-            }
-            return result;
-        } else {
-            //return marketRepo.findByName(name);
-            return new ArrayList<>();
+        List<MarketDto> list = new ArrayList<>();
+
+        for (Market market : marketRepo.findAll()) {
+            MarketDto marketDto = new MarketDto();
+            marketDto.setId(market.getId());
+            marketDto.setName(market.getName());
+            marketDto.setItems_name(market.getItemNo().getName());
+            marketDto.setLocation(market.getLocation());
+            list.add(marketDto);
         }
+        return list;
+//        if (name == null) {
+//            List<Market> listMarkets = marketRepo.findAll();
+//            List<MarketDto> result = new ArrayList<>();
+//            for(int i=0; i<listMarkets.size();i++){
+//                MarketDto marketDto = new MarketDto();
+//                marketDto.setId(listMarkets.get(i).getId());
+//                marketDto.setName(listMarkets.get(i).getName());
+//                marketDto.setLocation(listMarkets.get(i).getLocation());
+//                marketDto.setItems_name(listMarkets.get(i).getItemNo().getName());
+//                result.add(marketDto);
+//            }
+//            return result;
+//        } else {
+//            //return marketRepo.findByName(name);
+//            return new ArrayList<>();
+//        }
 //        return items.stream()
 //                .filter(item -> item.getName().contains(itemName))
 //                .collect(Collectors.toList());

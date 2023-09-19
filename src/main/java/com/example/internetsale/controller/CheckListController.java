@@ -17,9 +17,9 @@ public class CheckListController {
     @Autowired
     ListService listService;
 
-    @GetMapping
-    public Item lists(@RequestParam (name = "name", required = false) String name) {
-        return  listService.listLists(name);
+    @GetMapping("/show")
+    public List lists(@RequestParam String name) {
+        return listService.listLists(name);
     }
 
 

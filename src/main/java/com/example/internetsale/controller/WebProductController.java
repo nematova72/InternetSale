@@ -43,6 +43,7 @@ public class WebProductController {
 
     @DeleteMapping
     public String deleteAll(){
+
         return "Deleted";
     }
 

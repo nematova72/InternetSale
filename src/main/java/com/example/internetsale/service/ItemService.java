@@ -30,10 +30,12 @@ public class ItemService {
     }
 
     public Item saveItem(Item newItem) {
+
         return itemRepo.save(newItem);
     }
 
     public Item findById(Long items_Id){
+
         return itemRepo.findByItemsId(items_Id);
     }
 

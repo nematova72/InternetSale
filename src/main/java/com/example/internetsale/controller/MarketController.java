@@ -22,7 +22,6 @@ public class MarketController {
 
     @PostMapping("/create")
     public Market createMarket(@RequestBody Market newMarket){
-
         return marketService.saveMarket(newMarket);
     }
 

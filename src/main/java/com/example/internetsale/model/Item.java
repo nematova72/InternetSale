@@ -14,7 +14,6 @@ import java.util.Set;
 public class Item {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "items_id")
     private Long itemsId;
     @NotEmpty(message= "Name should not be empty")

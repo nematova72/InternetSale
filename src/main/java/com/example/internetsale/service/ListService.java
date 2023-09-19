@@ -17,10 +17,12 @@ public class ListService {
         this.listRepo = listRepo;
     }
 
-    public Item listLists(String name){
-
-
-            return listRepo.findByName(name);
+    public List<com.example.internetsale.model.List> listLists(String name){
+            return listRepo.findAllByName(name);
         }
+//        return items.stream()
+//                .filter(item -> item.getName().contains(itemName))
+//                .collect(Collectors.toList());
+    }
 
-}
+
