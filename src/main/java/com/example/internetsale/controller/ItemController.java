@@ -26,7 +26,7 @@ public class ItemController {
         return itemService.saveItem(newItem);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public Item updateItem(@RequestBody Item newItem, @PathVariable Long id) {
       return itemService.updateItem(id, newItem);
 

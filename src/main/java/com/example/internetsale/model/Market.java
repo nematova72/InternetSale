@@ -30,5 +30,3 @@ public class Market {
     Item itemNo;
 
 }
-
-

@@ -25,7 +25,7 @@ public class MarketController {
         return marketService.saveMarket(newMarket);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("update/{id}")
     public Market updateMarket(@RequestBody Market newMarket, @PathVariable Long id) {
         return marketService.updateMarket(id, newMarket);
     }

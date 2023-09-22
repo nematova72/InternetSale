@@ -14,7 +14,6 @@ public class ItemService {
 
     @Autowired
     public ItemService(ItemRepo itemRepo) {
-
         this.itemRepo = itemRepo;
     }
 
