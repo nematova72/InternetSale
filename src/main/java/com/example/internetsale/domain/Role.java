@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Entity
 public class Role implements Serializable {
 
-  @Id
+    @Id
     @NotNull
 
     private String name;

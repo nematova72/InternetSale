@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 @AllArgsConstructor
@@ -33,5 +34,6 @@ public class User implements Serializable {
             inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")
             }
     )
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
+
 }
