@@ -1,5 +1,6 @@
 package com.example.internetsale.domain;
 
+import com.example.internetsale.domain.enurmation.Status;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +28,15 @@ public class User implements Serializable {
 
     private String email;
 
-    @ManyToMany
+    private String firstName;
+
+    private String lastName;
+
+//    @Enumerated(EnumType.STRING)
+    private Status status;
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_role",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

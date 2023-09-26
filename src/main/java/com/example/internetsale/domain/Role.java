@@ -1,8 +1,6 @@
 package com.example.internetsale.domain;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -10,6 +8,9 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Role implements Serializable {
 
     @Id

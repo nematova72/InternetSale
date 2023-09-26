@@ -23,7 +23,7 @@ public class UserService {
     }
 
     public Boolean checkUserName(String userName){
-      return userRepository.existsByUserName(userName);
+        return userRepository.existsByUserName(userName);
     }
 
 
