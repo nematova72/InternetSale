@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/jwt")
+@RequestMapping("/api")
 public class UserJwtController {
 
     private final AuthenticationManager authenticationManager;
@@ -31,7 +31,7 @@ public class UserJwtController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/authenticate")
     public ResponseEntity login(@RequestBody LoginVM loginVM){
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginVM.getUserName(), loginVM.getPassword()));
         User user = userRepository.findByLogin(loginVM.getUserName());

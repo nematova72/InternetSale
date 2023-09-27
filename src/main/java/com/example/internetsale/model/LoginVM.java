@@ -20,4 +20,6 @@ public class LoginVM  {
     public void setPassword(String password) {
         this.password = password;
     }
+
+
 }
