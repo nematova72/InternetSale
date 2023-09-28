@@ -11,8 +11,9 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends JpaRepository<User, Long> {
 
     User findByUserName(String userUser);
-    @Query(nativeQuery = true, value = "select * from clean_code_user  where userName =:userName")
-    User findByLogin(@Param("userName")String userName);
+//    @Query(nativeQuery = true, value = "select * from clean_code_user  where userName =:userName")
+@Query("select u from User u where u.userName = :userName")
+User findByLogin(@Param("userName")String userName);
 
     boolean existsByUserName(String userName);
 }

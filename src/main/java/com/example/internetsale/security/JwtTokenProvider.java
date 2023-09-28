@@ -22,6 +22,7 @@ import java.util.Set;
 @Component
 public class JwtTokenProvider {
 
+
     @Value("${jwt.token.secret}")
     private String secret;
 
@@ -62,7 +63,7 @@ public class JwtTokenProvider {
     }
 
     public boolean  validateToken(String token){
-        Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+        Jws<Claims> claimsJws =  Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
         if (claimsJws.getBody().getExpiration().before(new Date())){
             return false;
         }

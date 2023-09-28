@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 
+
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -48,10 +50,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/user/register").permitAll()
+                .antMatchers("/api/authenticate").permitAll()
                 .antMatchers("/jwt/login").permitAll()
                 .antMatchers("/items/create").hasRole("ADMIN")
                 .antMatchers("/items/update/*").hasAnyRole("ADMIN","USER")
-                .antMatchers("/items ").permitAll()
+                .antMatchers("/items ").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
 //                .httpBasic();

@@ -22,7 +22,7 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity create (@RequestBody User user){
         if (!checkPasswordLength(user.getPassword())){
-            return new ResponseEntity("parol length must be less than 4 words", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity("parol length must be more than 3 words", HttpStatus.BAD_REQUEST);
         }
         if (userService.checkUserName(user.getUserName())){
             return new ResponseEntity("this user already registered", HttpStatus.BAD_REQUEST);
@@ -32,6 +32,6 @@ public class UserController {
 
 
     private boolean checkPasswordLength(String password) {
-        return password.length() > 4;
+        return password.length() > 3;
     }
 }
