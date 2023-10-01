@@ -22,9 +22,7 @@ import java.util.Objects;
 public class UserJwtController {
 
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenProvider jwtTokenProvider;
-
     private final UserRepository userRepository;
 
     public UserJwtController(AuthenticationManager authenticationManager, JwtTokenProvider jwtTokenProvider, UserRepository userRepository) {
@@ -33,17 +31,18 @@ public class UserJwtController {
         this.userRepository = userRepository;
     }
 
-    @PostMapping("/login")
+    @PostMapping("/authenticate")
     public ResponseEntity login(@RequestBody LoginVM loginVM){
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginVM.getUsername(), loginVM.getPassword()));
-        User user = userRepository.findByLogin(loginVM.getUsername());
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginVM.getUserName(), loginVM.getPassword()));
+        User user = userRepository.findByLogin(loginVM.getUserName());
         if (user == null){
-            throw new UsernameNotFoundException("Bu foydalanuvch mavjut emas");
+            throw new UsernameNotFoundException("This user not found");
         }
         String token = jwtTokenProvider.createToken(user.getUserName(), user.getRoles());
-        Map<Object, Object> map = new HashMap<>();
+        Map<String , Object> map = new HashMap<>();
         map.put("username", user.getUserName());
         map.put("token", token);
         return ResponseEntity.ok(map);
     }
+
 }
